@@ -43,14 +43,34 @@ public class BasicLamdaExpressions {
 		System.out.println("display first name starts with M");
 		printAll(people, p->p.getFirstName().startsWith("M"), p->System.out.println(p.getFirstName()));
 		System.out.println("display last name starts with B");
-		printAll(people, p->p.getLastName().startsWith("B"),p->System.out.println(p.getLastName()));
+		printAll(people, p -> p.getLastName().startsWith("B"), p -> System.out.println(p.getLastName()));
+
+
+		System.out.println("=====");
+
+
 	}
 
-	private static void printAll(List<Person> people, Predicate<Person> condition, Consumer<Person> consumer) {
+	private static void someUser(User user){
+
+	}
+
+
+
+
+
+
+	private static Predicate<Person>  printAll(List<Person> people, Predicate<Person> condition, Consumer<Person> consumer) {
 		for (Person person : people) {
 			if (condition.test(person))
 				consumer.accept(person);
 		}
+		return condition;
 	}
 
+}
+
+@FunctionalInterface
+interface User {
+	public Predicate test(Integer integer);
 }
