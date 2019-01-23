@@ -3,6 +3,7 @@ package com.java8.lambda;
 import java.util.*;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 public class BasicLamdaExpressions {
 
@@ -39,28 +40,23 @@ public class BasicLamdaExpressions {
 
 		printAll(people, p -> true,System.out::println);
 
+		printAll(people, p -> false, System.out::println);
 
-		System.out.println("display first name starts with M");
-		printAll(people, p->p.getFirstName().startsWith("M"), p->System.out.println(p.getFirstName()));
-		System.out.println("display last name starts with B");
-		printAll(people, p -> p.getLastName().startsWith("B"), p -> System.out.println(p.getLastName()));
 
+//		System.out.println("display first name starts with M");
+//		printAll(people, p->p.getFirstName().startsWith("M"), p->System.out.println(p.getFirstName()));
+//		System.out.println("display last name starts with B");
+//		printAll(people, p -> p.getLastName().startsWith("B"), p -> System.out.println(p.getLastName()));
 
 		System.out.println("=====");
-
-
 	}
 
 	private static void someUser(User user){
 
 	}
 
-
-
-
-
-
 	private static Predicate<Person>  printAll(List<Person> people, Predicate<Person> condition, Consumer<Person> consumer) {
+		System.out.println("Inside printAll()");
 		for (Person person : people) {
 			if (condition.test(person))
 				consumer.accept(person);
